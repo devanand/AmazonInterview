@@ -1,9 +1,5 @@
 package simple.trees;
 
-import java.lang.reflect.Array;
-import java.util.Collections;
-
-
 public class ReversePostOrder {
 
 	static void arrayToPostOrder(int a[],Node root, int start, int end) {

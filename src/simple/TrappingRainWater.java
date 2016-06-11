@@ -22,6 +22,7 @@ public class TrappingRainWater {
 		for(int i=0;i<a.length;i++) {
 			quantity += Math.min(left[i], right[i])-a[i];
 		}
+		
 		System.out.println(Arrays.toString(a));
 		System.out.println(Arrays.toString(left));
 		System.out.println(Arrays.toString(right));
@@ -29,7 +30,7 @@ public class TrappingRainWater {
 	}
 	
 	public static void main(String[] args) {
-		int a[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+		int a[] = {3, 0, 0, 2, 0, 4};
 		
 		trapWater(a);
 	}

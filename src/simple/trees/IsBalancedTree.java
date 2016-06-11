@@ -1,34 +1,37 @@
 package simple.trees;
 
-
 public class IsBalancedTree {
 
-	static int height(Node root) {
-		if(root == null) return 0;
-		
-		return(Math.max(height(root.left), height(root.right)))+1;
+	public static int maxLevel(Node node) {
+		if(node == null) return 0;
+		int left = maxLevel(node.left);
+		int right = maxLevel(node.right);
+		return Math.max(left, right)+1;
 	}
 	
-	static boolean isBalanced(Node root) {
+	public static boolean isBalancedNaive(Node root) {
 		if(root == null) return true;
 		
-		int leftHeight = height(root.left);
-		int rightHeight = height(root.right);
-		int diff = leftHeight>rightHeight?leftHeight-rightHeight:rightHeight-leftHeight;
-		if(diff<=1) {
-			return (isBalanced(root.left) && isBalanced(root.right));
-		}
+		int left = maxLevel(root.left);
+		int right = maxLevel(root.right);
 		
-		return false;
+		return Math.abs(left-right)<=1?isBalancedNaive(root.left) && isBalancedNaive(root.right):false;
+		
 	}
 	
-	public static void main(String[] args) {
-		Node root = new Node(1);
-		root.left = new Node(2);
-		//root.right = new Node(3);
-		root.left.left = new Node(4);
-		
-		System.out.println(isBalanced(root));
+	public static int isBalanced(Node root) {
+		if(root == null ) return 0;
+		int left = isBalanced(root.left);
+		int right = isBalanced(root.right);
+ 
+		if (left == -1 || right == -1)
+			return -1;
+ 
+		if (Math.abs(left - right) > 1) {
+			return -1;
+		}
+ 
+		return Math.max(left, right) + 1;
 	}
+	
 }
-
